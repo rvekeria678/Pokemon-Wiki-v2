@@ -54,13 +54,13 @@ function newCard(data, wrapper) {
         card__types.append(type);
     }
     card__image.src = data.sprites.front_default;
-    card__more.href = '#';
     card__more.innerText = 'Read More';
     // Styling HTML elements
     card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white';
     card__title.className = 'text-3xl font-Phudu';
     card__types.className = 'text-xl font-light flex';
-    card__more.className = 'text-sm md:hover:text-yellow-500';
+    card__more.className = 'text-sm md:hover:text-yellow-500 cursor-pointer';
+    card__image.className = 'h-32';
     //Structuring HTML Elements
     card__container.append(card__title);
     card__container.append(card__types);

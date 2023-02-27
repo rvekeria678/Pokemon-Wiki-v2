@@ -1,5 +1,8 @@
 const URL = 'https://pokeapi.co/api/v2/pokemon/'
 
+const search = document.querySelector('#search');
+const input = document.querySelector('#input');
+
 const next = document.querySelector('#next');
 const prev = document.querySelector('#prev');
 const pokemon__content = document.querySelector('#Pokedex');
@@ -26,6 +29,10 @@ const type__colors = {
     steel: 'bg-steel',
     fairy: 'bg-fairy'
 }
+
+search.addEventListener('click', (event)=>{
+    getPokemon(`${URL}${input.value.toLowerCase()}`).then(data=>{console.log(data);});
+});
 
 next.addEventListener('click', (event)=>{
     pokemon__content.innerText = '';
@@ -85,6 +92,9 @@ async function getBatch(url) {
     for (let i = 0; i < data.length; ++i) {
         newCard(data[i], document.querySelector('#Pokedex'));
     }
+}
+async function getPokemon(url) {
+    return await fetch(url).then(res => res.json());
 }
 
 function buttonHandler(url, btn) {

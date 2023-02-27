@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Pokemon Wiki</title>
+    <link rel="icon" href="./src/assets/images/pokeball.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -12,13 +13,14 @@
 </head>
 <body class="bg-blue-300">
     <nav class="flex shadow p-6 bg-white">
-        <a id="brand--logo" href="./index.html">
-            <h1 class="text-2xl font-semibold">Pokémon Wiki</h1>
+        <a class="flex" id="brand--logo" href="./index.html">
+            <img class='h-8 mx-2' src="./src/assets/images/pokeball.png"/>
+            <h1 class="text-2xl mx-2 font-semibold">Pokémon Wiki</h1>
         </a>
     </nav>
     <div id="MainContent">
         <div class="grid grid-cols-3 md:grid-cols-4 m-5 gap-4 lg:w-1/2" id="search--container">
-            <input  class="rounded-full text-center p-2 col-span-2 md:col-span-3 outline-none" placeholder="Pokémon Name"/>
+            <input  class="rounded-full text-center p-2 col-span-2 md:col-span-3 outline-none" placeholder="Pokémon Name / ID"/>
             <button class="bg-yellow-400 rounded-full  p-2 col-span-1 font-semibold">Search</button>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 m-5 gap-4" id="prev-next">

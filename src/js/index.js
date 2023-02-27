@@ -6,6 +6,27 @@ const pokemon__content = document.querySelector('#Pokedex');
 
 let next_url = '', prev_url = '';
 
+const type__colors = {
+    normal: 'bg-normal',
+    fire: 'bg-fire',
+    water: 'bg-water',
+    electric: 'bg-electric',
+    grass: 'bg-grass',
+    ice: 'bg-ice',
+    fighting: 'bg-fighting',
+    poison: 'bg-poison',
+    ground: 'bg-ground',
+    flying: 'bg-flying',
+    psychic: 'bg-psychic',
+    bug: 'bg-bug',
+    rock: 'bg-rock',
+    ghost: 'bg-ghost',
+    dragon: 'bg-dragon',
+    dark: 'bg-dark',
+    steel: 'bg-steel',
+    fairy: 'bg-fairy'
+}
+
 next.addEventListener('click', (event)=>{
     pokemon__content.innerText = '';
     getBatch(next_url);
@@ -25,11 +46,11 @@ function newCard(data, wrapper) {
     const card__image = document.createElement('img');
     const card__more = document.createElement('a');
     // Adding Data to HTML Elements
-    card__title.innerText = data.name;
+    card__title.innerText = data.name + ' #' + data.id.toString().padStart(4,'0');
     for (let i = 0; i < data.types.length; ++i) {
         const type = document.createElement('div');
         type.innerText = data.types[i].type.name;
-        type.className = 'mr-3 my-2 border px-3 py-1 rounded-full w-auto text-center'
+        type.className = 'mr-3 my-2 border px-3 py-1 rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
         card__types.append(type);
     }
     card__image.src = data.sprites.front_default;

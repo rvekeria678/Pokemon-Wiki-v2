@@ -36,8 +36,25 @@ const type__colors = {
     fairy: 'bg-fairy'
 }
 
+input.addEventListener('keypress', (event)=>{
+    if (event.key == 'Enter'){
+        search.click();
+    }
+});
+
+input.addEventListener("click", (event)=>{
+//    input.classList.remove('bg-red-300');
+    input.placeholder = 'Pokémon Name / ID"';
+    input.select();
+});
+
 search.addEventListener('click', (event)=>{
-    getPokemon(`${URL}${input.value.toLowerCase()}`).then(data=>{console.log(data);});
+    getPokemon(`${URL}${input.value.toLowerCase()}`).then(data=>{
+        generateSidePage(data);
+        main__content.style.display = 'none';
+        side__content.removeAttribute("style");
+        input.innerText = '';
+    });
 });
 
 next.addEventListener('click', (event)=>{
@@ -78,21 +95,7 @@ function newCard(data, wrapper) {
     card.addEventListener('click', (event)=> {
         side__content.removeAttribute("style");
         main__content.style.display = 'none';
-        const side__image = document.querySelector('#side--img');
-        const side__title = document.querySelector('#side--title');
-        const side__type = document.querySelector("#side--type");
-
-        side__type.innerText = '';
-
-        side__image.src = data.sprites.front_default;
-        side__title.innerText = data.name;
-
-        for (let i = 0; i < data.types.length; ++i) {
-            const type = document.createElement('div');
-            type.innerText = data.types[i].type.name;
-            type.className = 'mx-1 my-2 border px-6 py-1 rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
-            side__type.append(type);
-        }
+        generateSidePage(data);
     });
     // Styling HTML elements
     card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white hover:bg-indigo-400 duration-300 cursor-pointer';
@@ -102,10 +105,13 @@ function newCard(data, wrapper) {
     card.addEventListener('mouseenter', (event)=> {
         card__more.classList.remove('invisible');
         card__title.classList.add('text-white');
+        card__image.classList.add('md:animate-bounce');
     });
     card.addEventListener('mouseleave', (event)=> {
         card__more.classList.add('invisible');
-        card__title.classList.remove('text-white'); 
+        card__title.classList.remove('text-white');
+        card__image.classList.remove('md:animate-bounce');
+ 
     });
     card__image.className = 'h-32';
     //Structuring HTML Elements
@@ -115,6 +121,25 @@ function newCard(data, wrapper) {
     card.append(card__container);
     card.append(card__image);
     wrapper.append(card);
+}
+
+function generateSidePage(data) {
+    console.log(data);
+    const side__image = document.querySelector('#side--img');
+    const side__title = document.querySelector('#side--title');
+    const side__type = document.querySelector("#side--type");
+
+    side__type.innerText = '';
+
+    side__image.src = data.sprites.front_default;
+    side__title.innerText = data.name;
+
+    for (let i = 0; i < data.types.length; ++i) {
+        const type = document.createElement('div');
+        type.innerText = data.types[i].type.name;
+        type.className = 'mx-auto my-2 border px-6 py-2 font-semibold rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
+        side__type.append(type);
+    }
 }
 
 async function getBatch(url) {

@@ -128,8 +128,12 @@ function generateSidePage(data) {
     const side__image = document.querySelector('#side--img');
     const side__title = document.querySelector('#side--title');
     const side__type = document.querySelector("#side--type");
+    const side__stats = document.querySelector('#side--stats');
+    const weight = document.querySelector('#weight');
+    const height = document.querySelector('#height');
 
     side__type.innerText = '';
+    side__stats.innerText = '';
 
     side__image.src = data.sprites.front_default;
     side__title.innerText = data.name;
@@ -137,9 +141,24 @@ function generateSidePage(data) {
     for (let i = 0; i < data.types.length; ++i) {
         const type = document.createElement('div');
         type.innerText = data.types[i].type.name;
-        type.className = 'mx-auto my-2 border px-6 py-2 font-semibold rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
+        type.className = 'my-2 border px-6 py-2 font-semibold rounded-full text-center text-white font-semibold ' + type__colors[type.innerText];
         side__type.append(type);
     }
+
+    for (let i = 0; i < data.stats.length; ++i) {
+        const stat = document.createElement('li');
+        const stat_name = document.createElement('h2');
+        const stat_value = document.createElement('h2');
+        stat_name.innerText = data.stats[i].stat.name;
+        stat_value.innerText = data.stats[i].base_stat;
+        stat.className = 'flex justify-between text-white font-semibold font-Phudu w-1/2 text-xl mx-auto';
+        stat.append(stat_name);
+        stat.append(stat_value);
+        side__stats.append(stat);
+    }
+
+    weight.innerText = 'weight: ' + data.weight + 'kg';
+    height.innerText = 'height: ' + data.height + 'm';
 }
 
 async function getBatch(url) {

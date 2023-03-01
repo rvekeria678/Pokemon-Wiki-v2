@@ -11,7 +11,7 @@ const pokemon__content = document.querySelector('#Pokedex');
 const main__content = document.querySelector('#MainContent');
 const side__content = document.querySelector('#SideContent');
 
-//side__content.style.display = 'none';
+side__content.style.display = 'none';
 
 let next_url = '', prev_url = '';
 
@@ -49,6 +49,7 @@ prev.addEventListener('click', (event)=>{
     pokemon__content.innerText = '';
     getBatch(prev_url);
 });
+
 back.addEventListener('click', (event)=>{
     side__content.style.display = 'none';
     main__content.removeAttribute("style");
@@ -61,7 +62,7 @@ function newCard(data, wrapper) {
     const card__title = document.createElement('h1');
     const card__types = document.createElement('div');
     const card__image = document.createElement('img');
-    const card__more = document.createElement('a');
+    const card__more = document.createElement('h1');
     // Adding Data to HTML Elements
     card__title.innerText = data.name + ' #' + data.id.toString().padStart(4,'0');
     for (let i = 0; i < data.types.length; ++i) {
@@ -74,10 +75,9 @@ function newCard(data, wrapper) {
 
     // Side Content Handler
     card__more.innerText = 'Read More';
-    card__more.addEventListener('click', (event)=> {
+    card.addEventListener('click', (event)=> {
         side__content.removeAttribute("style");
         main__content.style.display = 'none';
-
         const side__image = document.querySelector('#side--img');
         const side__title = document.querySelector('#side--title');
         const side__type = document.querySelector("#side--type");
@@ -90,15 +90,23 @@ function newCard(data, wrapper) {
         for (let i = 0; i < data.types.length; ++i) {
             const type = document.createElement('div');
             type.innerText = data.types[i].type.name;
-            type.className = 'mr-3 my-2 border px-3 py-1 rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
+            type.className = 'mx-1 my-2 border px-6 py-1 rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
             side__type.append(type);
         }
     });
     // Styling HTML elements
-    card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white';
+    card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white hover:bg-indigo-400 duration-300 cursor-pointer';
     card__title.className = 'text-3xl font-Phudu';
     card__types.className = 'text-xl font-light flex';
-    card__more.className = 'text-sm md:hover:text-yellow-500 cursor-pointer';
+    card__more.className = 'text-lg font-bold font-Phudu text-white invisible';
+    card.addEventListener('mouseenter', (event)=> {
+        card__more.classList.remove('invisible');
+        card__title.classList.add('text-white');
+    });
+    card.addEventListener('mouseleave', (event)=> {
+        card__more.classList.add('invisible');
+        card__title.classList.remove('text-white'); 
+    });
     card__image.className = 'h-32';
     //Structuring HTML Elements
     card__container.append(card__title);

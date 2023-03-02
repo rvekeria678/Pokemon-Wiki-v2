@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="./dist/output.css" rel="stylesheet" />
 </head>
 <body class="bg-blue-300">
@@ -17,10 +18,17 @@
             <img class='h-8 mx-2' src="./src/assets/images/pokeball.png"/>
             <h1 class="text-2xl mx-2 font-semibold">Pokémon Wiki</h1>
         </a>
-        <ul class="flex">
-            <li class="mx-5 text-xl font-semibold cursor-pointer"><a href="./src/html/compare.html">Compare</a></li>
-            <li class="mx-5 text-xl font-semibold cursor-pointer"><a>About</a></li>
+        <button class="md:invisible" id="sidebar-toggle">
+            <span class="material-symbols-outlined">
+                menu
+                </span>
+        </button>
+        <ul class="md:flex hidden h-full">
+            <li >
+                <a class="text-2xl mx-4" href="./src/html/compare.html">Compare</a>
+            </li>
         </ul>
+
     </nav>
     <div id="MainContent">
         <div class="grid grid-cols-3 md:grid-cols-4 m-5 gap-4 lg:w-1/2" id="search--container">
@@ -49,5 +57,6 @@
 
     </div>
     <script src="./src/js/index.js"></script>
+    <script src="./src/js/sidebar.js"></script>
 </body>
 </html>

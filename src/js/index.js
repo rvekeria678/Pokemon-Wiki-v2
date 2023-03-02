@@ -82,12 +82,12 @@ function newCard(data, wrapper) {
     const card__more = document.createElement('h1');
     // Adding Data to HTML Elements
     card__title.innerText = data.name + ' #' + data.id.toString().padStart(4,'0');
-    for (let i = 0; i < data.types.length; ++i) {
+    data.types.forEach((types)=>{
         const type = document.createElement('div');
-        type.innerText = data.types[i].type.name;
+        type.innerText = types.type.name;
         type.className = 'mr-3 my-2 border px-3 py-1 rounded-full w-auto text-center text-white font-semibold ' + type__colors[type.innerText];
         card__types.append(type);
-    }
+    });
     card__image.src = data.sprites.front_default;
 
     // Side Content Handler
@@ -98,18 +98,18 @@ function newCard(data, wrapper) {
         generateSidePage(data);
     });
     // Styling HTML elements
-    card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white hover:bg-indigo-400 duration-300 cursor-pointer';
+    card.className = 'flex justify-between shadow rounded-2xl m-3 p-4 bg-white md:hover:bg-indigo-400 duration-300 cursor-pointer';
     card__title.className = 'text-3xl font-Phudu';
     card__types.className = 'text-xl font-light flex';
     card__more.className = 'text-lg font-bold font-Phudu text-white invisible';
     card.addEventListener('mouseenter', (event)=> {
         card__more.classList.remove('invisible');
-        card__title.classList.add('text-white');
+        card__title.classList.add('md:text-white');
         card__image.classList.add('md:animate-bounce');
     });
     card.addEventListener('mouseleave', (event)=> {
         card__more.classList.add('invisible');
-        card__title.classList.remove('text-white');
+        card__title.classList.remove('md:text-white');
         card__image.classList.remove('md:animate-bounce');
  
     });
@@ -138,24 +138,24 @@ function generateSidePage(data) {
     side__image.src = data.sprites.front_default;
     side__title.innerText = data.name;
 
-    for (let i = 0; i < data.types.length; ++i) {
+    data.types.forEach((types)=>{
         const type = document.createElement('div');
-        type.innerText = data.types[i].type.name;
+        type.innerText = types.type.name;
         type.className = 'my-2 border px-6 py-2 font-semibold rounded-full text-center text-white font-semibold ' + type__colors[type.innerText];
         side__type.append(type);
-    }
+    })
 
-    for (let i = 0; i < data.stats.length; ++i) {
+    data.stats.forEach((stats)=>{
         const stat = document.createElement('li');
         const stat_name = document.createElement('h2');
         const stat_value = document.createElement('h2');
-        stat_name.innerText = data.stats[i].stat.name;
-        stat_value.innerText = data.stats[i].base_stat;
+        stat_name.innerText = stats.stat.name;
+        stat_value.innerText = stats.base_stat;
         stat.className = 'flex justify-between text-white font-semibold font-Phudu w-1/2 text-xl mx-auto';
         stat.append(stat_name);
         stat.append(stat_value);
         side__stats.append(stat);
-    }
+    });
 
     weight.innerText = 'weight: ' + data.weight + 'kg';
     height.innerText = 'height: ' + data.height + 'm';
@@ -168,14 +168,15 @@ async function getBatch(url) {
     buttonHandler(next_url, next);
     buttonHandler(prev_url, prev);
     const batch = [];
-    for (let i = 0; i < page_request.results.length; ++i) {
-        batch.push(fetch(page_request.results[i].url).then(res=>res.json()));
-    }
+
+    page_request.results.forEach((r)=>{
+        batch.push(fetch(r.url).then(res=>res.json()));
+    });
     const data = await Promise.all(batch);
 
-    for (let i = 0; i < data.length; ++i) {
-        newCard(data[i], document.querySelector('#Pokedex'));
-    }
+    data.forEach((d)=>{
+        newCard(d, document.querySelector('#Pokedex'));
+    });
 }
 async function getPokemon(url) {
     return await fetch(url).then(res => res.json());

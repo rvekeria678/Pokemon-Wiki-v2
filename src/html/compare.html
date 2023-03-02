@@ -9,14 +9,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Phudu:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link href="../../dist/output.css" rel="stylesheet" />
 </head>
-<body class="bg-blue-300">
-    <nav class="flex shadow p-6 bg-white">
+<body class="bg-blue-300 h-screen w-screen">
+    <nav class="flex shadow p-6 bg-white justify-between">
         <a class="flex" id="brand--logo" href="../../index.html">
             <img class='h-8 mx-2' src="../assets/images/pokeball.png"/>
             <h1 class="text-2xl mx-2 font-semibold">Pokémon Wiki</h1>
         </a>
+        <button id="sidebar-toggle">
+            <span class="material-symbols-outlined">
+                menu
+                </span>
+        </button>
     </nav>
+    <div class="relative h-full">
+        <div class="bg-gray-700 duration-200 w-0 h-full absolute text-white text-3xl p-0" id="sidebar">
+            <ul class="m-10 invisible" id="sidebar-links">
+                <li class="my-2"><a href="../../index.html">Home</a></li>
+                <li class="my-2">Pokedex</li>
+                <li class="my-2">Compare</li>
+                <li class="my-2">About</li>
+            </ul>
+        </div>
+        <h1 class="absolute w-full text-center my-5 text-4xl z-20 font-Phudu">Pokemon Comparison</h1>
+    </div>
+    <script src="../js/sidebar.js"></script>
 </body>
 </html>

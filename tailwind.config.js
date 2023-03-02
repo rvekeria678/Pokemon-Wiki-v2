@@ -25,6 +25,21 @@ module.exports = {
         'dark': '#705746',
         'steel': '#B7B7CE',
         'fairy': '#D685AD'
+      }, 
+      animation: {
+        window_slider: 'window_slider 2s ease-in-out infinite alternate',
+        open_slider: 'open_slider 1s ease-in-out',
+        close_slider: 'close_slider 1s ease-in-out'
+      },
+      keyframes: {
+        open_slider : {
+          '0%': {right: '20rem'},
+          '100%': {right: '5rem'}
+        },
+        close_slider : {
+          '0%': {right: '5rem'},
+          '100%': {right: '20rem'}
+        }
       }
     },
   },

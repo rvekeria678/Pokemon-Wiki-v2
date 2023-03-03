@@ -8,15 +8,11 @@ toggler.forEach((e=>{
         if (sidebar.classList.contains('w-0')) {
             sidebar.classList.remove('w-0');
             sidebar.classList.add('w-80')
-            //sidebar.classList.add('z-40');
-            links.classList.add('visible');
-            links.classList.remove('invisible');
+            links.classList.remove('-left-40');
         } else {
             sidebar.classList.remove('w-80');
             sidebar.classList.add('w-0');
-            //sidebar.classList.remove('z-40');
-            links.classList.remove('visible');
-            links.classList.add('invisible');
+            links.classList.add('-left-40');
         }
     });
 }));

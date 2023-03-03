@@ -165,6 +165,9 @@ function generateSidePage(data) {
 }
 
 async function getBatch(url) {
+    document.querySelector('#brand--image').classList.add('animate-spin');
+    document.querySelector('#MainContent').classList.add('invisible');
+    document.querySelector('footer').classList.add('invisible');
     const page_request = await fetch(url).then(res => res.json());
     next_url = page_request.next;
     prev_url = page_request.previous;
@@ -180,6 +183,9 @@ async function getBatch(url) {
     data.forEach((d)=>{
         newCard(d, document.querySelector('#Pokedex'));
     });
+    document.querySelector('#brand--image').classList.remove('animate-spin');
+    document.querySelector('#MainContent').classList.remove('invisible');
+    document.querySelector('footer').classList.remove('invisible');
 }
 
 async function getPokemon(url) {

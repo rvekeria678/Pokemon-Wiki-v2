@@ -9,10 +9,12 @@ toggler.forEach((e=>{
             sidebar.classList.remove('w-0');
             sidebar.classList.add('w-80')
             links.classList.remove('-left-40');
+            document.body.classList.add('overflow-hidden');
         } else {
             sidebar.classList.remove('w-80');
             sidebar.classList.add('w-0');
             links.classList.add('-left-40');
+            document.body.classList.remove('overflow-hidden');
         }
     });
 }));

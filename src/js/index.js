@@ -3,8 +3,9 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/'
 const search = document.querySelector('#search');
 const input = document.querySelector('#input');
 
-const next = document.querySelector('#next');
-const prev = document.querySelector('#prev');
+const next = document.querySelectorAll('.next');
+const prev = document.querySelectorAll('.prev');
+
 const back = document.querySelector('#back');
 const pokemon__content = document.querySelector('#Pokedex');
 
@@ -43,7 +44,6 @@ input.addEventListener('keypress', (event)=>{
 });
 
 input.addEventListener("click", (event)=>{
-//    input.classList.remove('bg-red-300');
     input.placeholder = 'Pokémon Name / ID"';
     input.select();
 });
@@ -57,14 +57,17 @@ search.addEventListener('click', (event)=>{
     });
 });
 
-next.addEventListener('click', (event)=>{
-    pokemon__content.innerText = '';
-    getBatch(next_url);
+next.forEach(el=>{
+    el.addEventListener('click',(event)=>{
+        pokemon__content.innerText = '';
+        getBatch(next_url);
+    });
 });
-
-prev.addEventListener('click', (event)=>{
-    pokemon__content.innerText = '';
-    getBatch(prev_url);
+prev.forEach(el=>{
+    el.addEventListener('click', (event)=>{
+        pokemon__content.innerText = '';
+        getBatch(prev_url);
+    });
 });
 
 back.addEventListener('click', (event)=>{
@@ -178,17 +181,22 @@ async function getBatch(url) {
         newCard(d, document.querySelector('#Pokedex'));
     });
 }
+
 async function getPokemon(url) {
     return await fetch(url).then(res => res.json());
 }
 
 function buttonHandler(url, btn) {
     if (url === null) {
-        btn.disabled = true;
-        btn.classList.add('opacity-50');
+        btn.forEach(el=>{
+            el.disabled = true;
+            el.classList.add('opacity-50');
+        });
     } else {
-        btn.disabled = false;
-        btn.classList.remove('opacity-50');
+        btn.forEach(el=>{
+            el.disabled = false;
+            el.classList.remove('opacity-50');
+        });
     }
 }
 

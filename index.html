@@ -46,40 +46,48 @@
         </div>
     </div>
 
-    <div class="z-20" id="MainContent">
-        <div class="grid grid-cols-3 md:grid-cols-4 m-5 gap-4 lg:w-1/2" id="search--container">
-            <input id="input" class="rounded-full text-center p-2 col-span-2 md:col-span-3 outline-none"
-                placeholder="Pokémon Name / ID" />
-            <button id="search" class="bg-yellow-400 rounded-full  p-2 col-span-1 font-semibold">Search</button>
-        </div>
-        <div class="z-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 m-5 gap-4" id="prev-next">
-            <button class="prev p-2 rounded-full bg-gray-300">Previous</button>
-            <button class="next p-2 rounded-full bg-gray-300">Next</button>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5" id="Pokedex">
-        </div>
-        <div class="z-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 m-5 gap-4" id="prev-next">
-            <button class="prev p-2 rounded-full bg-gray-300">Previous</button>
-            <button class="next p-2 rounded-full bg-gray-300">Next</button>
-        </div>
-    </div>
-    <div class="z-20 p-10" id="SideContent"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-col-3 lg:grid-cols-4 xl:max-w-[1000px] gap-5 mt-10">
-        <img class="order-2 sm:order-1 w-2/3 lg:col-span-2 mx-auto bg-gradient-to-br from-gray-200 to-white rounded-full border-4"
-            id="side--img" />
-        <div class="order-1 sm:order-2 ">
-            <h1 class="text-white font-Phudu text-5xl font-extrabold tracking-widest my-5" id="side--title">Title</h1>
-            <div class="w-1/2 max-w-[300px] flex justify-between" id="side--type">Types</div>
-            <div class="flex mt-2">
-                <h1 class="text-white text-xl font-Phudu mr-3" id="height">Height - </h1>
-                <h1 class="text-white text-xl font-Phudu" id="weight">Weight - </h1>
+    <div class="flex flex-col min-h-screen">
+        <div class="flex-grow">
+            <div class="z-20" id="MainContent">
+                <div class="grid grid-cols-3 md:grid-cols-4 m-5 gap-4 lg:w-1/2" id="search--container">
+                    <input id="input" class="rounded-full text-center p-2 col-span-2 md:col-span-3 outline-none"
+                        placeholder="Pokémon Name / ID" />
+                    <button id="search" class="bg-yellow-400 rounded-full  p-2 col-span-1 font-semibold">Search</button>
+                </div>
+                <div class="z-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 m-5 gap-4" id="prev-next">
+                    <button class="prev p-2 rounded-full bg-gray-300">Previous</button>
+                    <button class="next p-2 rounded-full bg-gray-300">Next</button>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5" id="Pokedex">
+                </div>
+                <div class="z-10 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 m-5 gap-4" id="prev-next">
+                    <button class="prev p-2 rounded-full bg-gray-300">Previous</button>
+                    <button class="next p-2 rounded-full bg-gray-300">Next</button>
+                </div>
+            </div>
+
+            <div id="SideContent" class="grid grid-cols-1 gap-3 mt-10">
+                <div>
+                    <h1 class="text-center font-Phudu text-white text-4xl font-bold tracking-widest" id="side--title">
+                        Title
+                    </h1>
+                    <div class="flex justify-center" id="side--type">Types</div>
+                    <div class="flex justify-center font-Phudu text-white text-lg font-medium">
+                        <h1 class="mx-2" id="height">Height - </h1>
+                        <h1 class="mx-2" id="weight">Weight - </h1>
+                    </div>
+                </div>
+                <img class="mx-auto border-2 rounded-full bg-gradient-to-br from-slate-300 to-white w-1/2"
+                    id="side--img" />
+                <ul class="w-full" id="side--stats"></ul>
+                <button class="col-start-1 order-last rounded-full bg-gray-300 p-2 w-2/3 mx-auto"
+                    id="back">Back</button>
             </div>
         </div>
-        <ul class="list-none order-3 col-start-1 text-center md:col-span-2" id="side--stats"></ul>
-        <button class="col-start-1 order-last rounded-full bg-gray-300 p-2 w-2/3 mx-auto" id="back">Back</button>
     </div>
-    <footer class="h-12 bg-gray-800 p-3">
-        <small class="text-white flex justify-center md:justify-end">Copyright © 2023 Raj Vekeria. All rights reserved</small>
+    <footer class="h-[50px] bg-gray-800 p-3">
+        <small class="text-white flex justify-center md:justify-end">Copyright © 2023 Raj Vekeria. All rights
+            reserved</small>
     </footer>
     <script src="./src/js/index.js"></script>
     <script src="./src/js/sidebar.js"></script>

@@ -144,7 +144,7 @@ function generateSidePage(data) {
     data.types.forEach((types)=>{
         const type = document.createElement('div');
         type.innerText = types.type.name;
-        type.className = 'my-2 border px-6 py-2 font-semibold rounded-full text-center text-white font-semibold ' + type__colors[type.innerText];
+        type.className = 'my-2 mx-2 border px-6 py-2 font-semibold rounded-full text-center text-white font-semibold ' + type__colors[type.innerText];
         side__type.append(type);
     })
 
@@ -154,7 +154,7 @@ function generateSidePage(data) {
         const stat_value = document.createElement('h2');
         stat_name.innerText = stats.stat.name;
         stat_value.innerText = stats.base_stat;
-        stat.className = 'flex justify-between text-white font-semibold font-Phudu w-1/2 text-xl mx-auto';
+        stat.className = 'flex justify-between text-white font-semibold font-Phudu w-2/3 text-xl mx-auto';
         stat.append(stat_name);
         stat.append(stat_value);
         side__stats.append(stat);
